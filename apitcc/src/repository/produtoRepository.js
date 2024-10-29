@@ -2,13 +2,13 @@ import con from './connection.js'
 
 export async function inserirProduto(produto) {
     const comando = `
-        insert into tb_produtos (nm_nomeproduto, bt_categoria, ds_descricao, bt_zeroacucar, bt_diet, vl_preco_kg)
+        insert into tb_produtos (nomeProduto, categoria, descricao, zeroacucar, diet, precoKg)
         values (?, ?, ?, ?, ?, ?);
         `
-    let info = await con.query(comando[produto.nomeProduto, produto.categoria, produto.descricao, produto.zeroAcucar, produto.diet, produto.precoKg])
+    let info = await con.query(comando [produto.nomeProduto, produto.categoria, produto.descricao, produto.zeroAcucar, produto.diet, produto.precoKg])
 
     let respostas = info[0]
-    return respostas.inseritId
+    return respostas.insertId
 }
 
 export async function buscarProduto(){
