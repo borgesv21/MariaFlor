@@ -5,11 +5,12 @@ export async function inserirCliente(cliente){
     insert into tb_cliente (nome, email, telefone, cpf)
     values (?,?,?,?);
     `
-    let info = await con.query(comando, [cliente.nome, cliente.email, cliente.telefone, cliente.cpf])
+    let resposta = await con.query(comando, [cliente.nome, cliente.email, cliente.telefone, cliente.cpf])
 
-    let respostas = info[0]
+    let info = resposta[0]
+    let id = info.inseriId
 
-    return respostas.inserirId
+    return id
 }
 
 export async function buscarCliente(){

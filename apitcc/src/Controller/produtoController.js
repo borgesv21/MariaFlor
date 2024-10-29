@@ -35,7 +35,7 @@ endpoints.put('/produto/:id', async (req, resp)=> {
         let id = req.params.id;
         let produto = req.body;
 
-        let LinhasAfetadas = await db.alterarProduto(id, produto);
+        let LinhasAfetadas = await db.alterarProduto(produto, id);
         if (LinhasAfetadas >= 1){
             resp.send();
         }

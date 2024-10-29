@@ -2,25 +2,27 @@ import con from './connection.js'
 
 export async function inserirProduto(produto) {
     const comando = `
-        insert into tb_produtos (nomeProduto, categoria, descricao, zeroacucar, diet, precoKg)
-        values (?, ?, ?, ?, ?, ?);
-        `
-    let info = await con.query(comando [produto.nomeProduto, produto.categoria, produto.descricao, produto.zeroAcucar, produto.diet, produto.precoKg])
+    insert into tb_produtos(nomeproduto, categoria, descricao, zeroAcucar, diet, precoKg)
+	values (?, ?, ?, ?, ?, ?);
+   `
+   let resposta = await con.query(comando, [produto.nomeproduto, produto.categoria, produto.descricao, produto.zeroacucar, produto.diet, produto.precoKg]);
+   
+   let info = resposta[0]
+   let id = info.insertId
 
-    let respostas = info[0]
-    return respostas.insertId
+   return id
 }
 
 export async function buscarProduto(){
     const comando = `
     
     select id_produto, 
-    nm_nomeproduto           nomeproduto  ,
-    bt_categoria             categoria ,
-    ds_descricao             descricao       , 
-    bt_zeroacucar            zeroacucar ,
-    bt_diet,                 diet
-    vl_preco_kg              preco_kg 
+    nomeproduto           nomeproduto,
+    categoria             categoria,
+    descricao             descricao, 
+    zeroacucar            zeroacucar,
+    diet,                 diet,
+    precoKg               precoKg
     from tb_produtos;
 
 
@@ -33,17 +35,17 @@ export async function buscarProduto(){
 
 export async function alterarProduto(produto, idProduto) {
    const comando = `
-        update tb_produtos
-    set nm_nomeproduto = ?,
-    bt_categoria = ?,
-    ds_descricao = ?,
-    bt_zeroacucar = ?,
-    bt_diet = ?,
-    vl_preco_kg = ?
+    update tb_produtos
+    set nomeproduto = ?,
+        categoria = ?,
+        descricao = ?,
+        zeroacucar = ?,
+        diet = ?,
+        precoKg = ?
     where id_produto = ?;
     ` 
 
-    let resposta = await con.query(comando, [produto.categoria, produto.ingredientes, produto.descricao, produto.zeroAcucar, produto.diet, idProduto])
+    let resposta = await con.query(comando, [produto.nomeproduto,produto.categoria, produto.descricao, produto.zeroacucar, produto.diet, produto.precoKg ,idProduto])
     let info = resposta[0]
 
     return info.affectedRows
