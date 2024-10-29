@@ -2,25 +2,25 @@ import con from './connection.js'
 
 export async function inserirProduto(produto) {
     const comando = `
-insert into tb_produtos (nm_nomeproduto, bt_categoria, ds_descricao, bt_zeroacucar, bt_diet, vl_preco_kg)
-values (?, ?, ?, ?, ?, ?);
-`
-let info = await con.query(comando[produto.nm_nomeproduto, produto.bt_categoria, produto.ds_descricao, produto.bt_zeroacucar, produto.bt_diet, produto.vl_preco_kg])
+        insert into tb_produtos (nm_nomeproduto, bt_categoria, ds_descricao, bt_zeroacucar, bt_diet, vl_preco_kg)
+        values (?, ?, ?, ?, ?, ?);
+        `
+    let info = await con.query(comando[produto.nomeProduto, produto.categoria, produto.descricao, produto.zeroAcucar, produto.diet, produto.precoKg])
 
-let respostas = info[0]
-return respostas.inseritId
+    let respostas = info[0]
+    return respostas.inseritId
 }
 
 export async function buscarProduto(){
     const comando = `
     
-    select id_produto        select id_produto , 
-    nm_nomeproduto           nm_nomeproduto  ,
-    bt_categoria             bt_categoria ,
-    ds_descricao             ds_descricao       , 
-    bt_zeroacucar              bt_zeroacucar ,
-    bt_diet,                    bt_diet
-    vl_preco_kg                  vl_preco_kg 
+    select id_produto, 
+    nm_nomeproduto           nomeproduto  ,
+    bt_categoria             categoria ,
+    ds_descricao             descricao       , 
+    bt_zeroacucar            zeroacucar ,
+    bt_diet,                 diet
+    vl_preco_kg              preco_kg 
     from tb_produtos;
 
 
