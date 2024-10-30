@@ -1,4 +1,4 @@
-import { consultarEncomendas } from "../../repository/encomendasRepository"
+import { consultarEncomendas } from "../../repository/encomendasRepository.js"
 
 
 export default async function consultarEncomendasService(){

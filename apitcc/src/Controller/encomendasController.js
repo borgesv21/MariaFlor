@@ -51,12 +51,12 @@ endpoints.get('/encomendas', async (req, resp) =>{
 
 
 endpoints.put('/encomendas/:id', async (req, resp)=> {
+    
     try{
         let idEncomendas = req.params.id;
         let encomendas = req.body;
 
         await alterarEncomendaService(encomendas, idEncomendas);
-
         resp.send()
         
     }
@@ -65,6 +65,20 @@ endpoints.put('/encomendas/:id', async (req, resp)=> {
             erro : err.message
         })
     }
+    
+    // try{
+    //     let idEncomendas = req.params.id;
+    //     let encomendas = req.body;
+
+    //     await alterarEncomendaService(encomendas, idEncomendas);
+    //     resp.send()
+        
+    // }
+    // catch(err){
+    //     resp.status(400).send ({
+    //         erro : err.message
+    //     })
+    // }
 })
 
 

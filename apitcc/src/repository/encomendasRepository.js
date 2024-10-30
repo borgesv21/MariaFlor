@@ -9,7 +9,7 @@ export async function inserirEncomendas(encomendas){
 
     let resposta = await con.query(comando, [encomendas.nome, encomendas.contato, encomendas.descricao, encomendas.data_entrega, encomendas.forma_pagamento, encomendas.valor])
     let info = resposta[0]
-    let id = info.inseriId
+    let id = info.insertId
 
     return id
 }

@@ -11,6 +11,9 @@ const endpoints = Router();
 
 
 
+
+
+
 endpoints.post('/cliente/', async (req, resp) =>{
     try{
         let cliente = req.body

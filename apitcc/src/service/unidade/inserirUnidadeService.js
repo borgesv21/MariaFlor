@@ -1,4 +1,4 @@
-import { inserirUnidade } from "../../repository/unidadeRepository.jd";
+import { inserirUnidade } from "../../repository/unidadeRepository.js";
 
 export default async function inseriUnidadeService(unidade){
 

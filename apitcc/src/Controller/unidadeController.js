@@ -7,6 +7,11 @@ import inseriUnidadeService from "../service/unidade/inserirUnidadeService.js";
 import { Router } from "express"
 const endpoints = Router();
 
+
+
+
+
+
 endpoints.post('/unidade/', async (req, resp) =>{
     try{
         let unidade = req.body
@@ -23,6 +28,12 @@ endpoints.post('/unidade/', async (req, resp) =>{
     }
 })
 
+
+
+
+
+
+
 endpoints.get('/unidade', async (req, resp) =>{
     try{
         let unidade = await consultarUnidadeService();
@@ -35,12 +46,19 @@ endpoints.get('/unidade', async (req, resp) =>{
     }
 })
 
+
+
+
+
+
+
+
 endpoints.put('/unidade/:id', async (req, resp)=> {
     try{
-        let id = req.params.id;
+        let idUnidade = req.params.id;
         let unidade = req.body;
 
-        await alterarUnidadeService(id, unidade);
+        await alterarUnidadeService(idUnidade, unidade);
         
         resp.send()
     }
@@ -50,6 +68,11 @@ endpoints.put('/unidade/:id', async (req, resp)=> {
         })
     }
 })
+
+
+
+
+
 
 
 endpoints.delete('/unidade/:id', async (req, resp) => {
