@@ -13,7 +13,7 @@ export async function inserirCliente(cliente){
     return id
 }
 
-export async function buscarCliente(){
+export async function consultarCliente(){
     const comando = `
     select      id_cliente,
     nome        nome,

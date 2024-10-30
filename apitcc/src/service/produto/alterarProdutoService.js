@@ -1,6 +1,6 @@
 import { alterarProduto } from "../../repository/produtoRepository.js";
 
-export default async function alterarProduto(produto, idProduto){
+export default async function alterarProdutoService(produto, idProduto){
 
     let LinhasAfetadas = await alterarProduto(produto, idProduto)
 

@@ -1,12 +1,20 @@
-import * as db from '../repository/encomendasRepository.js'
 
-import{Router} from "express"
+import inserirEncomendasService from "../service/encomenda/inserirEncomendasService.js";
+import consultarEncomendaService from "../service/encomenda/consultarEncomendaService.js";
+import alterarEncomendaService from "../service/encomenda/alterarEncomendaService.js";
+import deletarEncomendasService from "../service/encomenda/deletarEncomendaService.js";
+
+import {Router} from "express"
 const endpoints = Router();
+
+
+
+
 
 endpoints.post('/encomendas/', async (req, resp) =>{
     try{
         let encomendas = req.body
-        let id = await db.inserirEncomendas(encomendas)
+        let id = await inserirEncomendasService(encomendas)
         resp.send({
             idEncomendas: id
         })
@@ -18,9 +26,15 @@ endpoints.post('/encomendas/', async (req, resp) =>{
     }
 })
 
+
+
+
+
+
+
 endpoints.get('/encomendas', async (req, resp) =>{
     try{
-        let encomendas = await db.BuscarEncomendas();
+        let encomendas = await consultarEncomendaService();
         resp.send(encomendas);
     }
     catch(err){
@@ -30,18 +44,21 @@ endpoints.get('/encomendas', async (req, resp) =>{
     }
 })
 
+
+
+
+
+
+
 endpoints.put('/encomendas/:id', async (req, resp)=> {
     try{
         let idEncomendas = req.params.id;
         let encomendas = req.body;
 
-        let LinhasAfetadas = await db.alterarEncomendas(encomendas, idEncomendas);
-        if (LinhasAfetadas >= 1){
-            resp.send();
-        }
-        else {
-            resp.status(404).send ({error: 'Nenhum registro encontrado'})
-        }
+        await alterarEncomendaService(encomendas, idEncomendas);
+
+        resp.send()
+        
     }
     catch(err){
         resp.status(400).send ({
@@ -51,17 +68,18 @@ endpoints.put('/encomendas/:id', async (req, resp)=> {
 })
 
 
+
+
+
+
 endpoints.delete('/encomendas/:id', async (req, resp) => {
     try{
         let id = req.params.id;
-        let LinhasAfetadas = await db.deletarEncomendas(id);
-        if(LinhasAfetadas >= 1){
-            resp.send();
-        }
-        else {
-            resp.status(404).send({error: 'Nenhum registro encontrado'})
-        }
-    
+
+        await deletarEncomendasService(id);
+
+        resp.send()
+        
     }
     catch (err){
         resp.status(400).send({

@@ -1,6 +1,6 @@
 import { alterarUnidade } from "../../repository/unidadeRepository.js";
 
-export default async function alterarUnidade(unidade, idUnidade){
+export default async function alterarUnidadeService(unidade, idUnidade){
 
     let LinhasAfetadas = await alterarUnidade(unidade, idUnidade)
 

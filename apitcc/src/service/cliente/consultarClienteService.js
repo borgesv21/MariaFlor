@@ -1,9 +1,9 @@
-import { buscarCliente } from "../../repository/clienteRepository.js";
+import { consultarCliente } from "../../repository/clienteRepository.js";
 
 
-export default async function buscarClienteService(){
+export default async function consultarClienteService(){
 
-    let registros = await buscarCliente()
+    let registros = await consultarCliente()
 
     return registros
 

@@ -1,9 +1,9 @@
-import { buscarEncomendas } from "../../repository/encomendasRepository.js";
+import { consultarEncomendas } from "../../repository/encomendasRepository"
 
 
-export default async function buscarEncomendasService(){
+export default async function consultarEncomendasService(){
 
-    let registros = await buscarEncomendas()
+    let registros = await consultarEncomendas()
 
     return registros
 

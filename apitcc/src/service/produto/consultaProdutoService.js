@@ -1,9 +1,9 @@
-import { buscarProduto } from "../../repository/produtoRepository.js";
+import { consultarProduto } from "../../repository/produtoRepository.js";
 
 
-export default async function buscarProdutoServices(){
+export default async function consultarProdutoServices(){
 
-    let registros = await buscarProduto()
+    let registros = await consultarProduto()
 
     return registros
 

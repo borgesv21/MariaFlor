@@ -13,7 +13,7 @@ export async function inserirProduto(produto) {
    return id
 }
 
-export async function buscarProduto(){
+export async function consultarProduto(){
     const comando = `
     
     select id_produto, 

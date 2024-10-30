@@ -1,8 +1,8 @@
-import { buscarUnidade } from "../../repository/unidadeRepository.js"
+import { consultarUnidade } from "../../repository/unidadeRepository.js"
 
-export default async function buscarUnidadeService(){
+export default async function consultarUnidadeService(){
 
-    let registros = await buscarUnidade()
+    let registros = await consultarUnidade()
 
     return registros
 

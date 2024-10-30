@@ -12,7 +12,7 @@ export async function inserirUnidade(unidade) {
     return respostas.inserirId
 }
 
-export async function buscarUnidade() {
+export async function consultarUnidade() {
     const comando = `
         
     select unidade unidade, 

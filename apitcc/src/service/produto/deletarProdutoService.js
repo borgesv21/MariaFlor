@@ -1,7 +1,7 @@
 import { deletarProduto} from "../../repository/produtoRepository.js";
 
 
-export default async function deletarProduto(id){
+export default async function deletarProdutoService(id){
 
     let LinhasAfetadas = await deletarProduto(id)
 

@@ -14,7 +14,7 @@ export async function inserirEncomendas(encomendas){
     return id
 }
 
-export async function BuscarEncomendas() {
+export async function consultarEncomendas() {
     const comando = `
     
     select id_encomenda, 
