@@ -49,10 +49,20 @@ endpoints.put('/produto/:id', async (req, resp)=> {
         let idProduto = req.params.id;
         let produto = req.body;
 
+<<<<<<< HEAD
         await alterarProdutoService(produto, idProduto);
 
         resp.send()
         
+=======
+        let LinhasAfetadas = await db.alterarProduto(produto, id);
+        if (LinhasAfetadas >= 1){
+            resp.send();
+        }
+        else {
+            resp.status(404).send ({error: 'Nenhum registro encontrado'})
+        }
+>>>>>>> 9f29a9d16d96f10b316eefc16bb4a48a8cd2c164
     }
     catch(err){
         resp.status(400).send ({

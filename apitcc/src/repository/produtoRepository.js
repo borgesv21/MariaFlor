@@ -5,7 +5,11 @@ export async function inserirProduto(produto) {
     insert into tb_produtos(nomeproduto, categoria, descricao, zeroAcucar, diet, precoKg)
 	values (?, ?, ?, ?, ?, ?);
    `
+<<<<<<< HEAD
    let resposta = await con.query(comando, [produto.nomeproduto, produto.categoria, produto.descricao, produto.zeroacucar, produto.diet, produto.precoKg ]);
+=======
+   let resposta = await con.query(comando, [produto.nomeproduto, produto.categoria, produto.descricao, produto.zeroacucar, produto.diet, produto.precoKg]);
+>>>>>>> 9f29a9d16d96f10b316eefc16bb4a48a8cd2c164
    
    let info = resposta[0]
    let id = info.insertId
@@ -41,12 +45,20 @@ export async function alterarProduto(produto, idProduto) {
         descricao = ?,
         zeroacucar = ?,
         diet = ?,
+<<<<<<< HEAD
         precoKg = ?,
        
     where id_produto = ?;
     ` 
 
     let resposta = await con.query(comando, [produto.nomeproduto,produto.categoria, produto.descricao, produto.zeroacucar, produto.diet, produto.precoKg , idProduto])
+=======
+        precoKg = ?
+    where id_produto = ?;
+    ` 
+
+    let resposta = await con.query(comando, [produto.nomeproduto,produto.categoria, produto.descricao, produto.zeroacucar, produto.diet, produto.precoKg ,idProduto])
+>>>>>>> 9f29a9d16d96f10b316eefc16bb4a48a8cd2c164
     let info = resposta[0]
 
     return info.affectedRows
